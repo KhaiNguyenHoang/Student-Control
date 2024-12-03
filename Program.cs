@@ -1,5 +1,8 @@
-﻿using Student_Control;
-using static System.Console;
+﻿#region
+
+using Student_Control;
+
+#endregion
 
 namespace MyNamespace;
 
@@ -7,8 +10,6 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        StudentList studentList = new StudentList();
-        studentList.AddStudent();
-        Write(studentList.ToString());
+        var Menu = new Menu();
     }
 }

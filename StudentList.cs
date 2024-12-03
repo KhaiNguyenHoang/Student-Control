@@ -1,86 +1,88 @@
 ﻿namespace Student_Control;
-using static System.Console;
+
+#region
+
+using static Console;
+
+#endregion
 
 public class StudentList
 {
-    private List<Student<string, string>> students;
+    private List<Student<string, string>> _students;
 
     public StudentList()
     {
-        students = new List<Student<string, string>>();
+        _students = new List<Student<string, string>>();
     }
 
     public List<Student<string, string>> Students
     {
-        get => students;
-        set => students = value ?? throw new ArgumentNullException(nameof(value));
+        get => _students;
+        set => _students = value ?? throw new ArgumentNullException(nameof(value));
     }
 
     public void AddStudent()
     {
         Write("Enter student ID: ");
-        var name = ReadLine();
+        var studentId = ReadLine();
         Write("Enter student name: ");
-        var studentID = ReadLine();
+        var name = ReadLine();
         Write("Enter name of parent: ");
-        var parent  = ReadLine();
+        var parent = ReadLine();
         Write("Enter grade: ");
         var grade = ReadLine();
-        double[] listMark= new double[3]; 
-        for (int i = 0; i < 3; i++)
+        var listMark = new double[3];
+        for (var i = 0; i < 3; i++)
         {
             Write($"Enter mark for subject {i + 1}: ");
             while (true)
             {
-                string input = ReadLine();
-                if (double.TryParse(input, out double mark))
+                var input = ReadLine();
+                if (double.TryParse(input, out var mark))
                 {
                     listMark[i] = mark;
-                    break; 
+                    break;
                 }
-                else
-                {
-                    WriteLine("Invalid input. Please enter a valid number.");
-                }
+
+                WriteLine("Invalid input. Please enter a valid number.");
             }
         }
-        var newstudent = new Student<string, string>(name, grade, parent, studentID, listMark);
-        students.Add(newstudent);
+
+        if (name != null)
+        {
+            var newstudent = new Student<string, string>(name, grade, parent, studentId, listMark);
+            _students.Add(newstudent);
+        }
+
         WriteLine("Added student!");
     }
 
     public override string ToString()
     {
-        string output = "";
-        foreach (var student in students)
+        var output = "";
+        foreach (var student in _students) // Lặp qua từng phần tử của _students
         {
             output += $"Name: {student.Fullname}, Student ID: {student.StudentId}, Grade: {student.Grade}, Parent: {student.Parent}, Student Avg Marks: {student.AvgMarks}\n";
         }
         return output;
     }
 
-    public void removeStudent()
+    public void RemoveStudent()
     {
-        bool flag = false;
+        var flag = false;
         Write("Enter student ID: ");
         var id = ReadLine();
-        foreach (var student in students)
-        {
+        foreach (var student in _students)
             if (student.StudentId == id)
             {
-                students.Remove(student);
+                _students.Remove(student);
                 flag = true;
                 break;
             }
-        }
 
         if (flag)
-        {
             WriteLine("Removed student!");
-        }
         else
-        {
             WriteLine("Student not found!");
-        }
     }
 }

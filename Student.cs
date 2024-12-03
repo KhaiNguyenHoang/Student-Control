@@ -3,24 +3,21 @@
 public class Student<T1, T2>
 {
     private string _fullname;
+    private T2 _grade;
     private double[] _marks = new double[3];
     private string _parent;
     private T1 _studentId;
-    private T2 _grade;
 
     public Student(string fullname, T2 grade, string parent, T1 studentId, double[] marks)
     {
-        this._fullname = fullname;
-        this._grade = grade;
-        this.Grade = grade;
-        this._parent = parent;
-        this.Marks=marks;
+        _fullname = fullname;
+        _grade = grade;
+        Grade = grade;
+        _parent = parent;
+        Marks = marks;
         _studentId = studentId;
         AvgMarks = 0;
-        foreach (var s in _marks)
-        {
-            AvgMarks = AvgMarks + s;
-        }
+        foreach (var s in _marks) AvgMarks = AvgMarks + s;
         AvgMarks = AvgMarks / 3;
     }
 
