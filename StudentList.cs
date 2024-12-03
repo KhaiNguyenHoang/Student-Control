@@ -62,7 +62,7 @@ public class StudentList
         var output = "";
         foreach (var student in _students) // Lặp qua từng phần tử của _students
         {
-            output += $"Name: {student.Fullname}, Student ID: {student.StudentId}, Grade: {student.Grade}, Parent: {student.Parent}, Student Avg Marks: {student.AvgMarks}\n";
+            output += $"{student.ToString()}\n";
         }
         return output;
     }
