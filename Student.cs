@@ -111,10 +111,4 @@ public class Student<T1, T2> : ISpanFormattable, IUtf8SpanFormattable
             $"{nameof(_fullname)}: {_fullname}, {nameof(_grade)}: {_grade}, {nameof(_marks)}: {_marks}, {nameof(_parent)}: {_parent}, {nameof(_studentId)}: {_studentId}, {nameof(_hocLuc)}: {_hocLuc}",
             out bytesWritten);
     }
-
-    public override string ToString()
-    {
-        return
-            $"{nameof(_fullname)}: {_fullname}, {nameof(_grade)}: {_grade}, {nameof(_marks)}: {_marks}, {nameof(_parent)}: {_parent}, {nameof(_studentId)}: {_studentId}, {nameof(_hocLuc)}: {_hocLuc}";
-    }
 }
